@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/signup")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "https://skotels.netlify.app")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RegisterController {
 
     private final UserService userService;
