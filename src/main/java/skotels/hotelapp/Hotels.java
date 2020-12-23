@@ -15,30 +15,32 @@ public class Hotels {
     private String name;
     private String email;
     private String location;
-    private String internet_access;
+    private String internetAccess;
     private String rooms;
     private String phone;
     private String website;
     private String stars;
     private String latitude;
     private String longitude;
+    private String address;
 
     public Hotels() {
     }
 
-    public Hotels(String name, String email, String location, String internet_access,
+    public Hotels(String name, String email, String location, String internetAccess,
                   String rooms, String phone, String website, String stars, String latitude,
-                  String longitude) {
+                  String longitude, String address) {
         this._id = new ObjectId();
         this.name = name;
         this.email = email;
         this.location = location;
-        this.internet_access = internet_access;
+        this.internetAccess = internetAccess;
         this.rooms = rooms;
         this.phone = phone;
         this.website = website;
         this.stars = stars;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.address = address;
     }
 }
