@@ -9,7 +9,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/hotels")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "https://skotels.netlify.app")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class HotelsController {
 
     private final HotelsRepository hotelsRepository;

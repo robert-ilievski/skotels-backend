@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/login")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "https://skotels.netlify.app")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LoginController {
 
     private final UserService userService;
