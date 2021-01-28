@@ -35,7 +35,7 @@ public class LoginController {
                     .orElseThrow(() -> new RuntimeException("InvalidUserCredentials"));
             return ResponseEntity.ok().body(user1);
         }
-        return ResponseEntity.ok().body(new MessageResponse("Invalid user credentials"));
+        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("/logout")
