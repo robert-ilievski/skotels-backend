@@ -1,12 +1,18 @@
 package skotels.hotelapp.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Hotels {
 
     @Id
@@ -23,9 +29,6 @@ public class Hotels {
     private String latitude;
     private String longitude;
     private String address;
-
-    public Hotels() {
-    }
 
     public Hotels(String name, String email, String location, String internetAccess,
                   String rooms, String phone, String website, String stars, String latitude,
