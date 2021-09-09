@@ -87,7 +87,7 @@ public class HotelsServiceImplTest {
     @Test
     public void shouldUnsuccessfullyFindHotelsByName() {
         // given
-        String name = "hotel";
+        String name = "name";
 
         when(hotelsRepository.findAllByNameContains(name)).thenReturn(new ArrayList<>());
 
