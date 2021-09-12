@@ -27,7 +27,7 @@ public class RegisterController {
         if (this.userService.existsByUsername(newUser.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body("Error: Username is already taken!");
         }
         // Create new user's account
         String username = newUser.getUsername();
@@ -38,6 +38,6 @@ public class RegisterController {
         else if (newUser.getRole().equals("ROLE_ADMIN")) {
             this.userService.save(new User(username, password, "ROLE_ADMIN"));
         }
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity.ok("User registered successfully!");
     }
 }
