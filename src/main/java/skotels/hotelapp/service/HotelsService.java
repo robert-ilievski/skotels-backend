@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface HotelsService {
     Optional<Hotels> findHotelById(String id);
     List<Hotels> findHotelsByName(String name);
-    List<Hotels> saveHotel(Hotels hotel);
+    Hotels saveHotel(Hotels hotel);
     List<Hotels> listAll();
     List<Hotels> deleteHotelByName(String name);
     List<Hotels> sortDescendingByStars();

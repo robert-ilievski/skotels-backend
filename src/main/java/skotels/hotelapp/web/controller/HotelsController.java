@@ -1,18 +1,16 @@
 package skotels.hotelapp.web.controller;
 
-import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import skotels.hotelapp.model.Hotels;
-import skotels.hotelapp.repository.HotelsRepository;
 import skotels.hotelapp.service.HotelsService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/hotels")
-//@CrossOrigin(origins = "https://skotels.netlify.app")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class HotelsController {
 
@@ -28,32 +26,26 @@ public class HotelsController {
         return this.hotelsService.listAll();
     }
 
-    // Finds hotel by its id
-    // @GetMapping("/{id}")
-    // public Hotels getById(@RequestParam String _id){
-    //     return this.hotelsService.findHotelById(_id).get();
-    // }
-
     // Find hotels by given name
     @PostMapping("/searchHotels")
     public List<Hotels> findAllByName(@RequestParam String search){
         return this.hotelsService.findHotelsByName(search);
     }
 
-
     // Save hotel in the db
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/save")
-    public List<Hotels> saveHotel(@RequestBody Hotels hotel){
-        return this.hotelsService.saveHotel(hotel);
+    public ResponseEntity<Hotels> saveHotel(@RequestBody Hotels hotel){
+        return new ResponseEntity<>(this.hotelsService.saveHotel(hotel), HttpStatus.CREATED);
     }
 
     // Delete hotel from the db
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/delete")
-    public List<Hotels> deleteHotel(
-            @RequestBody Hotels h){
-        return this.hotelsService.deleteHotelByName(h.getName());
+    public ResponseEntity<String> deleteHotel(@RequestBody Hotels h){
+        String name = h.getName();
+        this.hotelsService.deleteHotelByName(name);
+        return new ResponseEntity<>("Successfully deleted hotel", HttpStatus.OK);
     }
 
     // Sort hotels by stars in descending order

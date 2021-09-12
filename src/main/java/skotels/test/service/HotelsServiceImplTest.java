@@ -103,22 +103,17 @@ public class HotelsServiceImplTest {
     @Test
     public void shouldSuccessfullySaveHotel() {
         // given
-        Hotels hotel1 = Hotels.builder().name("name1").build();
-        Hotels hotel2 = Hotels.builder().name("name2").build();
-        List<Hotels> hotels = new ArrayList<>();
-        hotels.add(hotel1);
-        hotels.add(hotel2);
+        Hotels hotel = Hotels.builder().name("name").build();
 
-        when(hotelsService.listAll()).thenReturn(hotels);
+        when(hotelsRepository.save(any())).thenReturn(hotel);
 
         // when
-        List<Hotels> result = hotelsService.saveHotel(hotel2);
+        Hotels result = hotelsService.saveHotel(hotel);
 
         // then
-        verify(hotelsRepository).save(hotel2);
+        verify(hotelsRepository).save(any());
         assertThat(result).isNotNull();
-        assertThat(result).isNotEmpty();
-        assertThat(result).isEqualTo(hotels);
+        assertThat(result).isEqualTo(hotel);
     }
 
     @Test

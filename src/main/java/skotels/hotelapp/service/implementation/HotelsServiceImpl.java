@@ -35,9 +35,9 @@ public class HotelsServiceImpl implements HotelsService {
 
     // Saving new hotel
     @Override
-    public List<Hotels> saveHotel(Hotels hotel) {
+    public Hotels saveHotel(Hotels hotel) {
         this.hotelsRepository.save(hotel);
-        return listAll();
+        return hotel;
     }
 
     // Returning list of all hotels
