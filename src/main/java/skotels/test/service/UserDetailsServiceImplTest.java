@@ -127,4 +127,18 @@ public class UserDetailsServiceImplTest {
         assertThat(result).isNotNull();
         assertThat(result).isEqualTo(false);
     }
+
+    @Test
+    public void shouldSaveUserSuccessfully(){
+        // given
+        when(userRepository.save(user)).thenReturn(user);
+
+        // when
+        User result = userService.save(user);
+
+        // then
+        verify(userRepository).save(user);
+        assertThat(result).isNotNull();
+        assertThat(result).isEqualTo(user);
+    }
 }
